@@ -88,7 +88,7 @@ final class SnapshotTestingTests: XCTestCase {
 
   func testAutolayout() {
     #if os(iOS)
-    let vc = UIViewController()
+    let vc = UIViewController(nibName: nil, bundle: nil)
     vc.view.translatesAutoresizingMaskIntoConstraints = false
     let subview = UIView()
     subview.translatesAutoresizingMaskIntoConstraints = false
@@ -787,7 +787,7 @@ final class SnapshotTestingTests: XCTestCase {
     label.adjustsFontForContentSizeCategory = true
     label.text = "What's the point?"
 
-    let viewController = UIViewController()
+    let viewController = UIViewController(nibName: nil, bundle: nil)
     viewController.view.addSubview(label)
 
     label.translatesAutoresizingMaskIntoConstraints = false
@@ -938,14 +938,14 @@ final class SnapshotTestingTests: XCTestCase {
   func testViewControllerHierarchy() {
     #if os(iOS)
     let page = UIPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
-    page.setViewControllers([UIViewController()], direction: .forward, animated: false)
+    page.setViewControllers([UIViewController(nibName: nil, bundle: nil)], direction: .forward, animated: false)
     let tab = UITabBarController()
     tab.viewControllers = [
       UINavigationController(rootViewController: page),
-      UINavigationController(rootViewController: UIViewController()),
-      UINavigationController(rootViewController: UIViewController()),
-      UINavigationController(rootViewController: UIViewController()),
-      UINavigationController(rootViewController: UIViewController())
+      UINavigationController(rootViewController: UIViewController(nibName: nil, bundle: nil)),
+      UINavigationController(rootViewController: UIViewController(nibName: nil, bundle: nil)),
+      UINavigationController(rootViewController: UIViewController(nibName: nil, bundle: nil)),
+      UINavigationController(rootViewController: UIViewController(nibName: nil, bundle: nil))
     ]
     assertSnapshot(matching: tab, as: .hierarchy)
     #endif

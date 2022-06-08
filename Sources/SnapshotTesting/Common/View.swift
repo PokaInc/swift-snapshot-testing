@@ -913,7 +913,7 @@ func renderer(bounds: CGRect, for traits: UITraitCollection) -> UIGraphicsImageR
 private func add(traits: UITraitCollection, viewController: UIViewController, to window: UIWindow) -> () -> Void {
   let rootViewController: UIViewController
   if viewController != window.rootViewController {
-    rootViewController = UIViewController()
+    rootViewController = UIViewController(nibName: nil, bundle: nil)
     rootViewController.view.backgroundColor = .clear
     rootViewController.view.frame = window.frame
     rootViewController.view.translatesAutoresizingMaskIntoConstraints =
